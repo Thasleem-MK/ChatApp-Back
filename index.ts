@@ -1,21 +1,27 @@
 import express from "express";
-import { configDotenv } from "dotenv";
-const cors = require("cors");
-const connectToDb = require("./config/dbConnect");
+import { config } from "dotenv";
+import cors from "cors";
+import connectToDb from "./config/dbConnect";
+import userRouter from "./Routes/userRoute";
 
 const app = express();
 
-configDotenv({ path: "./config/.env" });
+config({ path: "./config/.env" });
 
 connectToDb();
+
 app.use(
   cors({
     origin: "*",
     credentials: true,
   })
 );
+
 app.use(express.json());
 
-app.listen(process.env.port, () => {
-  console.log(`Server running in port number ${process.env.port}`);
+app.use(userRouter);
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server running on port number ${port}`);
 });

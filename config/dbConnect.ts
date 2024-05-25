@@ -13,4 +13,4 @@ async function connectToDB() {
     process.exit(1);
   }
 }
-module.exports = connectToDB;
+ export default connectToDB;

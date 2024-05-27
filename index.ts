@@ -19,7 +19,7 @@ app.use(
 
 app.use(express.json());
 
-app.use("/ChatApp", userRouter);
+app.use("/chatApp", userRouter);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

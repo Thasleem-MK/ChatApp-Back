@@ -3,6 +3,7 @@ import { config } from "dotenv";
 import cors from "cors";
 import connectToDb from "./config/dbConnect";
 import userRouter from "./Routes/userRoute";
+import cookieParser from "cookie-parser";
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(
 );
 
 app.use(express.json());
+app.use(cookieParser());
 
 app.use("/chatApp", userRouter);
 
